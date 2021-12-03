@@ -1,23 +1,7 @@
-﻿using System;
+﻿using AdventCode;
+using System;
 using System.IO;
 using System.Text;
 
-
-
-            Console.WriteLine("Hello, World!");
-             var lines = File.ReadAllLines("input.txt");
-             int[] ints = Array.ConvertAll(lines, int.Parse);
-            int timesItsBigger = 0;
-            int lastMeasurment = 0;
-             foreach (var item in ints)
-             {
-                if(lastMeasurment != 0)
-                {
-                    if(item > lastMeasurment)
-                    {
-                         timesItsBigger++;
-                    }                 
-                }
-                lastMeasurment = item;
-             } 
-             Console.WriteLine(timesItsBigger);
+        //Day2 day2 = new Day2();
+        Binary Binary = new Binary();  //day 3 rough
