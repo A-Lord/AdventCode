@@ -2,7 +2,7 @@
 {
     internal class Binary
     {
-        private readonly string[] lines = File.ReadAllLines(@"C:\Users\sildo\AdventCode\gama.txt");
+        private readonly string[] lines = File.ReadAllLines(@"C:\Users\Adam\Source\Repos\A-Lord\AdventCode\gama.txt");
         public Binary()
         {
             string finalAnswer = "";
