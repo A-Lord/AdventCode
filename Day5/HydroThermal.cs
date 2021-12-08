@@ -12,13 +12,12 @@ namespace AdventCode.Day5
 
         private Grid _grid = new Grid();
         public HydroThermal(int WhichPart)
-        {
-            
+        {   
             SplitLines(WhichPart);
         }
         private void SplitLines(int WhichPart)
         {
-            foreach (string line in File.ReadAllLines(@"C:\Users\Adam\Source\Repos\A-Lord\AdventCode\Day5\gama.txt"))
+            foreach (string line in File.ReadAllLines(@"/home/sildor/Documents/AdventCode-main/Day5/gama.txt"))
             {
                 
                 int[] coords = Regex.Split(line, @"[^\d]+").Select(int.Parse).ToArray();
