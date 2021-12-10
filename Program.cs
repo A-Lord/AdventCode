@@ -1,12 +1,14 @@
 ﻿using AdventCode.Day5;
 using AdventCode_main.Day6;
 using AdventCode_main.Day7;
+using AdventCode;
 
 using System;
 using System.IO;
 using System.Text;
 
-        Day7 dau7 = new Day7(2,false);
+        Binary day3 = new Binary();
+        //Day7 dau7 = new Day7(2,false);
         //Day6 day6 = new Day6();
         //day6.FishSex();
         //HydroThermal day5 = new HydroThermal(2);

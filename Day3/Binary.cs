@@ -1,13 +1,59 @@
-﻿namespace AdventCode
+﻿using System.IO;
+using System.Text.RegularExpressions;
+
+namespace AdventCode
 {
     internal class Binary
     {
-        private readonly string[] lines = File.ReadAllLines(@"C:\Users\Adam\Source\Repos\A-Lord\AdventCode\gama.txt");
+        private readonly string[] lines = File.ReadAllLines(@"C:\Users\Adam\Source\Repos\A-Lord\AdventCode\Day3\gama.txt");
         public Binary()
+        {
+            NewSulotion();
+        }
+        public void NewSulotion()
+        {
+
+            //int xStep = x1 == x2 ? 0 : x1 > x2 ? -1 : 1;  
+
+            List<string> OxygenList = new List<string>(lines);
+            List<string> Co2List = new List<string>(lines);
+            string bigestFirst = "";
+            for (int i = 0; i < 12; i++)
+			{
+                char bigest = lines.Count(item => item[i] == '1') > lines.Count(item => item[i] == '0') ? '1' : '0';
+                bigestFirst += bigest;
+                 
+                if (OxygenList.Count > 1)
+                {
+                    char j = OxygenList.Count(item => item[i] == '1') >= OxygenList.Count(item => item[i] == '0') ? '1' : '0';
+
+                    OxygenList = OxygenList.FindAll(item => item[i] == j);
+                }
+
+                if (Co2List.Count > 1)
+                {
+                    char j = Co2List.Count(item => item[i] == '1') < Co2List.Count(item => item[i] == '0') ? '1' : '0';
+
+                    Co2List = Co2List.FindAll(item => item[i] == j);
+                }
+			}
+            string output = bigestFirst.Replace('0', '2').Replace('1', '0').Replace('2', '1');
+            Console.WriteLine(bigestFirst);
+            Console.WriteLine(output);
+            Console.WriteLine(Convert.ToInt32(OxygenList[0], 2) * Convert.ToInt32(Co2List[0], 2));
+        }
+
+
+
+
+        public void OldSulotion()
         {
             string finalAnswer = "";
             int[] countedBitsOne = new int[12] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
             int[] countedBitsZeros = new int[12] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+
+
+
 
             //int[] ints = Array.ConvertAll(lines, int.Parse);
             foreach (string item in lines)
@@ -75,14 +121,12 @@
             }
 
             char oneOrZero = '1';
-            int countOne;
-            int countZeros;
+            int countOne = 0;
+            int countZeros = 0;
             while (true)
             {
                 index++;
 
-                countOne = oxygenList.Count(item => item[index] == '1');
-                countZeros = oxygenList.Count(item => item[index] == '0');
 
                 if (countOne >= countZeros)
                 {
