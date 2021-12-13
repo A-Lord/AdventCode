@@ -7,7 +7,31 @@ using System;
 using System.IO;
 using System.Text;
 
-        Binary day3 = new Binary();
+
+
+        System.Console.WriteLine("Welcome To AdventCode 2021");
+        System.Console.WriteLine("Pick a day to see its sulotion");
+
+        Day8 day8 = new Day8();
+        int answe = day8.CalculateDigits(1,false);
+        System.Console.WriteLine(answe);
+        // if (day8.CalculateDigits(1,true) == 26)
+        // {
+        //     System.Console.WriteLine("first Test Cleared answer is 26");
+            
+        // }
+        // if (day8.CalculateDigits(2,true) == 61229)
+        // {
+        //     System.Console.WriteLine("2th Test cleared Answer is 61229");
+        // }
+        
+
+
+
+
+            
+        
+        //Binary day3 = new Binary();
         //Day7 dau7 = new Day7(2,false);
         //Day6 day6 = new Day6();
         //day6.FishSex();

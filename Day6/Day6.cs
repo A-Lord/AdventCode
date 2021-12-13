@@ -17,7 +17,6 @@ namespace AdventCode_main.Day6
         
         public Day6()
         {   
-            int index = 0;
             foreach (string line in File.ReadAllLines(@"C:\Users\Adam\Source\Repos\A-Lord\AdventCode\Day6\fish.txt"))
             {
                 

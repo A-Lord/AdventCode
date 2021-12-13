@@ -5,7 +5,7 @@ namespace AdventCode
 {
     internal class Binary
     {
-        private readonly string[] lines = File.ReadAllLines(@"C:\Users\Adam\Source\Repos\A-Lord\AdventCode\Day3\gama.txt");
+        private readonly string[] lines = File.ReadAllLines(@"Day3\gama.txt");
         public Binary()
         {
             NewSulotion();

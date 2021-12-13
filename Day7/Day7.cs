@@ -81,6 +81,7 @@ namespace AdventCode_main.Day7
         }
         private int[] GetInput(bool test)
         {
+
                 if(test)
                 {
                     foreach (string line in File.ReadAllLines(@"/home/sildor/Documents/AdventCode-main/Day7/crabsTest.txt"))
@@ -97,7 +98,8 @@ namespace AdventCode_main.Day7
                     return crabCordsTest;
                     }
                 }
-                return null;
+                int[] bug = new int[1];
+                return bug;
         }
     }
 }
