@@ -14,6 +14,7 @@ namespace AdventCode_main.Day6
      
         public Day6()
         {
+            Console.WriteLine("\n");
             test(4);
             test(14);
         }
@@ -32,7 +33,7 @@ namespace AdventCode_main.Day6
                     var results = lastFor.Distinct();
                     if (results.Count() == uniqNumber)
                     {
-                        markers += " Break at " + i + " and uniqNumber = " + uniqNumber;
+                        markers += "Break at " + i + " and uniqNumber = " + uniqNumber;
                         break;
                     }
                 }

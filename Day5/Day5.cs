@@ -13,6 +13,7 @@ namespace AdventCode.Day5
     {
         public Day5()
         {
+            run();
         }
         public void run()
         {
@@ -49,6 +50,7 @@ namespace AdventCode.Day5
                     chunks[Int32.Parse(coms[5])].Push(crane.Pop());
                 }
             }
+            Console.WriteLine("Day5 Answer: ");
             foreach (var item in chunks)
             {
                 Console.Write(item.Value.Peek());
