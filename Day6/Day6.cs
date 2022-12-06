@@ -16,25 +16,30 @@ namespace AdventCode_main.Day6
         private long[] fishDays = new long[9];        
         public Day6()
         {
+            test(4);
+            test(14);
+        }
+        private void test(int uniqNumber)
+        {
             string[] lines = File.ReadAllLines(@"F:\Work\AdventCode\Day6\input.txt");
             string markers = "";
-            for (int i = 0; i < lines[0].Length; i++)
+            for (int i = 0; i < (lines[0].Length + 1); i++)
             {
-               
-                if (i > 2 && i < (lines[0].Length - 3))
-                {
-                    int startIndex = i - 3;
 
-                    var lastFor = lines[0].Substring(startIndex, 4).ToList();
+                if (i > (uniqNumber - 1))
+                {
+                    int startIndex = i - uniqNumber;
+
+                    var lastFor = lines[0].Substring(startIndex, uniqNumber).ToList();
                     var results = lastFor.Distinct();
-                    Console.WriteLine(results.Count());
-                    if (results.Count() == 4)
+                    if (results.Count() == uniqNumber)
                     {
-                        markers += i+1;
+                        markers += " Break at " + i + " and uniqNumber = " + uniqNumber;
+                        break;
                     }
                 }
             }
-            //Console.WriteLine(markers);
+            Console.WriteLine(markers);
         }
 
        
