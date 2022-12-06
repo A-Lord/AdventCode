@@ -11,9 +11,7 @@ namespace AdventCode_main.Day6
 {
     internal class Day6
     {
-   
-
-        private long[] fishDays = new long[9];        
+     
         public Day6()
         {
             test(4);
