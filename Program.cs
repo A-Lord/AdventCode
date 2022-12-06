@@ -1,6 +1,5 @@
 ﻿using AdventCode.Day5;
 using AdventCode_main.Day6;
-using AdventCode_main.Day7;
 using AdventCode;
 
 using System;
@@ -9,13 +8,13 @@ using System.Text;
 
 
 
-        System.Console.WriteLine("Welcome To AdventCode 2022");
-        System.Console.WriteLine("Pick a day to see its sulotion");
+        //System.Console.WriteLine("Welcome To AdventCode 2022");
+        //System.Console.WriteLine("Pick a day to see its sulotion");
 
-        Day5 day5 = new Day5();
-day5.run();
-//int answe = day8.CalculateDigits(1,false);
-Console.ReadLine();
+        Day6 day6 = new Day6();
+
+            //int answe = day8.CalculateDigits(1,false);
+            Console.ReadLine();
         //System.Console.WriteLine(answe);
         // if (day8.CalculateDigits(1,true) == 26)
         // {

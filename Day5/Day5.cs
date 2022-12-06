@@ -11,63 +11,48 @@ namespace AdventCode.Day5
 {
     internal class Day5
     {
-
         public Day5()
         {
-            
         }
         public void run()
         {
-            int chunkSize = 4;
-            Dictionary<int ,Stack<string>> chunks = new Dictionary<int ,Stack<string>>();
-            Dictionary<int ,Stack<string>> formatedChunks = new Dictionary<int ,Stack<string>>();
-
-            for (int j = 1; j < 11; j++)
-            {
-                chunks.Add(j, new Stack<string>());
-                formatedChunks.Add(j, new Stack<string>());
-            }
-
-            string[] lines = File.ReadAllLines(@"C:\Users\User\git\AdventCode\Day5\input.txt");
-            string[] startInput = lines.Take(10).ToArray();
+            Dictionary<int ,Stack<char>> chunks = new Dictionary<int ,Stack<char>>();
+            string[] lines = File.ReadAllLines(@"F:\Work\AdventCode\Day5\input.txt");
+            string[] startInput = lines.Take(8).ToArray();
             string[] commands = lines.Skip(10).ToArray();
-
-
-            for (int j = startInput.Length; j-- > 0;)
+            for (int i = startInput.Length; i-- > 0;)
             {
-
-                int counter = 1;
-                    for (int i = 0; i < startInput[j].Length -1; i += chunkSize)
-                    {
-
-                    string block = startInput[j].Substring(i, chunkSize);
-                    string test = new String(block.Where(Char.IsLetter).ToString());
-                    if (test != null)
-                    {
-                        chunks[counter].Push(test);
-                    }
-                    counter++;
-                    
-                }
-                foreach (var item in chunks)
+                string test = startInput[i].Replace("    ", "[X] ").Replace("   ", "[x]");
+                Regex rgx = new Regex("[^a-zA-Z-]");
+               test = rgx.Replace(test, "");
+                for (int j = 0; j < test.Length; j++)
                 {
-                    foreach (var x in item.Value)
+                    if(test[j] != 'X')
                     {
-                        Console.Write(x + ",");
+                        int index = j + 1;
+                        if (!chunks.ContainsKey(index))
+                            chunks.Add(index, new Stack<char>());
+                        chunks[index].Push(test[j]);
                     }
-                }
-                
-
-
-
+                }       
             }
-               
-            
-
-
-            
-            
-
+            Stack<char> crane = new Stack<char>();
+            foreach (var c in commands)
+            {
+                var coms = c.Split(' ');
+                for (int i = 0; i < Int32.Parse(coms[1]); i++)
+                {
+                    crane.Push(chunks[Int32.Parse(coms[3])].Pop());
+                }
+                for (int i = 0; i < Int32.Parse(coms[1]); i++)
+                {
+                    chunks[Int32.Parse(coms[5])].Push(crane.Pop());
+                }
+            }
+            foreach (var item in chunks)
+            {
+                Console.Write(item.Value.Peek());
+            }
         }
     }
 }
