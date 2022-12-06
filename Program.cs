@@ -9,12 +9,14 @@ using System.Text;
 
 
 
-        System.Console.WriteLine("Welcome To AdventCode 2021");
+        System.Console.WriteLine("Welcome To AdventCode 2022");
         System.Console.WriteLine("Pick a day to see its sulotion");
 
-        Day8 day8 = new Day8();
-        int answe = day8.CalculateDigits(1,false);
-        System.Console.WriteLine(answe);
+        Day5 day5 = new Day5();
+day5.run();
+//int answe = day8.CalculateDigits(1,false);
+Console.ReadLine();
+        //System.Console.WriteLine(answe);
         // if (day8.CalculateDigits(1,true) == 26)
         // {
         //     System.Console.WriteLine("first Test Cleared answer is 26");
