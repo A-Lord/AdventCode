@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace AdventCode.Day5
 {
-    internal class Day5
+    internal class Day1
     {
-        public Day5()
+        public Day1()
         {
             run();
         }
