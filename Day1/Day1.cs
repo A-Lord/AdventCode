@@ -11,7 +11,8 @@ namespace AdventCode.Day1
 {
     internal class Day1
     {
-
+        private int currentDialerLocation = 50;
+        private int amountOfZeroes = 0;
         public Day1()
         {
             run();
@@ -20,53 +21,110 @@ namespace AdventCode.Day1
         {
 
             //Dictionary<int ,Stack<char>> chunks = new Dictionary<int ,Stack<char>>();
-            string[] lines = File.ReadAllLines(@"F:\Work\AdventCode\Day1\input.txt");
-            int[] leftSide = new int[lines.Length];
-            int[] rightSide = new int[lines.Length];
+            string[] lines = File.ReadAllLines(@"C:\Users\sildor\Documents\minaSidor\mina-sidor\AdventCode\Day1\input.txt");
+            int rotationAmount = 0;
+            char rotationDirection;
 
             for (int i = 0; i < lines.Length; i++)
             {
 
-                string[] splitLine = lines[i].Split("   ");
-               
-                leftSide[i] = Int32.Parse(splitLine[0]);
-                rightSide[i] = Int32.Parse(splitLine[1]);
+                rotationDirection = lines[i][0];
 
-
-
-            }
-            Array.Sort(leftSide);
-            Array.Sort(rightSide);
-
-            int distance = 0;
-            int testDistance = 0;
-            int similarity = 0;
-            int similarityMultiplier = 0;
-            for (int i = 0; i < lines.Length; i++)
-            {
-                similarityMultiplier = 0;
-                for (int x = 0; x < lines.Length; x++)
+                rotationAmount = Int32.Parse(Regex.Replace(lines[i], @"[^\d]", ""));
+                switch (rotationDirection)
                 {
-                    if (leftSide[i] == rightSide[x])
-                        similarityMultiplier += 1;
+                    case 'L':
+                        getLeftDiale(rotationAmount);
+                        break;
+                    case 'R':
+                        getRightDiale(rotationAmount);
+                        break;
                 }
-                similarity += leftSide[i] * similarityMultiplier;
 
-                if (leftSide[i] >= rightSide[i])
-                    testDistance = leftSide[i] - rightSide[i];
-                if(rightSide[i] > leftSide[i])
-                    testDistance = rightSide[i] - leftSide[i];
-               
-                distance += testDistance;
             }
-       
+
 
             Console.WriteLine("Day1 Part 1 Answer: :");
-            Console.WriteLine(distance);
+            Console.WriteLine(amountOfZeroes);
             Console.WriteLine("Day1 Part 2 Answer: :");
-            Console.WriteLine(similarity);
+            Console.WriteLine("");
 
         }
-    
+        private void getLeftDiale(int rotation)
+        {
+            while(rotation > 0)
+            {
+                if (currentDialerLocation == 0)
+                {
+                    currentDialerLocation = 99;
+                    rotation--;
+                    
+                }
+                else
+                {
+                    currentDialerLocation--;
+                    rotation--;
+                    if(currentDialerLocation == 0)
+                    {
+                        amountOfZeroes++;
+                    }
+                }
+               
+                
+            }
+            // int tomany;
+            // int tempPosition = currentDialerLocation;
+            // if ((tempPosition - rotation) < 0)
+            // {
+            //     tomany = rotation - tempPosition;
+            //     while (tomany > 99)
+            //     {
+            //         tomany = 100 - tomany;
+            //     }
+            //     currentDialerLocation = 100 - tomany;
+            //     Console.WriteLine("left rotate: " + rotation + " from current: " + tempPosition + " after rotate " + currentDialerLocation);
+            //     return;
+            // }
+            // currentDialerLocation = tempPosition - rotation;
+            // Console.WriteLine("left rotate: " + rotation + " from current: " + tempPosition + " after rotate " + currentDialerLocation);
+            // return;
+        }
+        private void getRightDiale(int rotation)
+        {
+                 while(rotation > 0)
+            {
+                if (currentDialerLocation == 99)
+                {
+                    currentDialerLocation = 0;
+                    rotation--;
+                    amountOfZeroes++;
+                }
+                else
+                {
+                    currentDialerLocation++;
+                      rotation--;
+                }
+               
+                
+            }
+            // int tomany;
+            // int tempPosition = currentDialerLocation;
+            // if ((currentDialerLocation + rotation) > 99)
+            // {
+            //     tomany = rotation + currentDialerLocation;
+            //     while (tomany > 99)
+            //     {
+            //         tomany = tomany - 99;
+            //     }
+            //     currentDialerLocation = tomany;
+            //     Console.WriteLine("right rotate: " + rotation + " from current: " + tempPosition + " after rotate " + currentDialerLocation);
+            //     return;
+            // }
+            // currentDialerLocation = currentDialerLocation + rotation;
+            // Console.WriteLine("right rotate: " + rotation + " from current: " + tempPosition + " after rotate " + currentDialerLocation);
+            // return;
+
+        }
+
     }
 }
