@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace AdventCode.Day2
 {
-    internal class Day3
+    internal class Day2
     {
 
-        public Day3()
+        public Day2()
         {
             run();
         }
@@ -20,96 +20,69 @@ namespace AdventCode.Day2
         {
 
             //Dictionary<int ,Stack<char>> chunks = new Dictionary<int ,Stack<char>>();
-            string[] lines = File.ReadAllLines(@"F:\Work\AdventCode\Day2\input.txt");
-
-            int saveReports = 0;
-            int testWrongNumbers = 0;
-            for (int i = 0; i < lines.Length; i++)
+            string[] lines = File.ReadAllLines(@"C:\Users\sildor\Documents\minaSidor\mina-sidor\AdventCode\Day2\input.txt");
+            string[] stringIds = lines[0].Split(",");
+            string[] currentString;
+            string startID;
+            string endId;
+            long range;
+            string currentNumb;
+            long answer = 0;
+            for (int i = 0; i < stringIds.Length; i++)
             {
-                int lastNumber = 0;
-                int curentNumber = 0;
-                int isIncreasing = 0;
-                Boolean tolerateOne = true;
-                
-                string[] splitLine = lines[i].Split(" ");
-                for (int x = 0; x < splitLine.Length; x++)
+                currentString = stringIds[i].Split('-');
+                startID = currentString[0];
+                endId = currentString[1];
+                range = long.Parse(endId) - long.Parse(startID);
+                currentNumb = startID;
+                // string first;
+                // string second;
+                // int halfNumber;
+                for (int j = 0; j < range; j++)
                 {
-                    curentNumber = Int32.Parse(splitLine[x]);
-                    if (x == 0)
+                    // if (currentNumb.Length % 2 == 0)
+                    // {
+                    //     halfNumber = currentNumb.Length / 2;
+                    //     first = currentNumb.Substring(0, halfNumber);
+                    //     second = currentNumb.Substring(halfNumber);
+                    //     if (first == second)
+                    //     {
+                           
+                    //     }
+                    // }
+                    if (Check(currentNumb))
                     {
-                        lastNumber = curentNumber;
+                         answer = answer + long.Parse(currentNumb);
                     }
-                    else
-                    {
-                        if(lastNumber < curentNumber)
-                        {
-                            
-                            if((isIncreasing == 0 | isIncreasing == 2) && (curentNumber - lastNumber) <= 3) {
-                                isIncreasing = 2;
-                                lastNumber = curentNumber;
-                            }
-                            else if (tolerateOne)
-                            {
-                                tolerateOne = false;
-                                isIncreasing = 2;
-                                lastNumber = curentNumber;
-                            }
-                            else
-                            {
-                                break;
-                            }
-                            
-                        }
-                        else if (lastNumber > curentNumber)
-                        {
-                            if ((isIncreasing == 0 | isIncreasing == 3) && ((lastNumber - curentNumber) <= 3))
-                            {
-                                isIncreasing = 3;
-                                lastNumber = curentNumber;
-                            }
-                            else if (tolerateOne)
-                            {
-                                tolerateOne = false;
-                                isIncreasing = 3;
-                                lastNumber = curentNumber;
-                            }
-                            else
-                            {
-                                break;
-                            }
 
-                        }
-                        else if (lastNumber == curentNumber && tolerateOne)
-                        {
-                            lastNumber = curentNumber;
-                            tolerateOne = false;
-                        }
-                        else { break; }
-
-                        if (x == splitLine.Length -1)
-                        {
-                            saveReports++;
-                        }
-
-                    }
-     
-
+                    currentNumb = (long.Parse(currentNumb) + 1).ToString();
 
                 }
-
-
             }
-    
 
-       
 
             Console.WriteLine("Day1 Part 2 Answer: :");
-            Console.WriteLine(saveReports);
-            Console.WriteLine(testWrongNumbers);
+            Console.WriteLine(answer);
+            Console.WriteLine("");
             Console.WriteLine("Day1 Part 2 Answer: :");
-            //Console.WriteLine(similarity);
-
         }
-    
+
+        public bool Check(string str)
+        {
+            return (str + str).IndexOf(str, 1) != str.Length;
+        }
+
+
+
+
+
+
+
+
+
+        //Console.WriteLine(similarity);
+
     }
+
 }
+

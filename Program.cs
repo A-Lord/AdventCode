@@ -1,4 +1,4 @@
-﻿using AdventCode.Day1;
+﻿using AdventCode.Day2;
 
 using AdventCode;
 
@@ -10,8 +10,7 @@ using System.Text;
 
 //System.Console.WriteLine("Welcome To AdventCode 2022");
 //System.Console.WriteLine("Pick a day to see its sulotion");
-Day1 day1 = new Day1();
-
+Day2 day2 = new Day2();
           
             Console.ReadLine();
       
